@@ -29,10 +29,10 @@ export default class UpdateCustomerUseCase {
       id: customer.id,
       name: customer.name,
       address: {
-        street: customer.Address.street,
-        number: customer.Address.number,
-        zip: customer.Address.zip,
-        city: customer.Address.city,
+        street: customer.address.street,
+        number: customer.address.number,
+        zip: customer.address.zip,
+        city: customer.address.city,
       },
     };
   }
