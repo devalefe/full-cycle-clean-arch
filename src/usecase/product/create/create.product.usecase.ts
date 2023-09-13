@@ -13,7 +13,6 @@ export default class CreateProductUseCase {
     input: InputCreateProductDto
   ): Promise<OutputCreateProductDto> {
     const product = ProductFactory.create(
-      input.type,
       input.name,
       input.price
     );

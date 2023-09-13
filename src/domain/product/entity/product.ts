@@ -1,6 +1,4 @@
-import ProductInterface from "./product.interface";
-
-export default class Product implements ProductInterface {
+export default class Product {
   private _id: string;
   private _name: string;
   private _price: number;
