@@ -3,7 +3,7 @@ import CreateProductUseCase from "./create.product.usecase";
 const input = {
   id: "1",
   type: "a",
-  name: "Product 1",
+  name: "Product A",
   price: 100,
 }
 
@@ -28,5 +28,22 @@ describe('Unit test create product use case', () => {
       name: input.name,
       price: input.price,
     })
+  });
+
+  it("should thrown an error if invalid name is provided", async () => {
+    const productRepository = MockRepository();
+    const productCreateUseCase = new CreateProductUseCase(productRepository);
+
+    input.name = "";
+    await expect(productCreateUseCase.execute(input)).rejects.toThrow("Name is required");
+  });
+
+  it("should thrown an error if invalid price is provided", async () => {
+    const productRepository = MockRepository();
+    const productCreateUseCase = new CreateProductUseCase(productRepository);
+
+    input.name = "Product A";
+    input.price = -1;
+    await expect(productCreateUseCase.execute(input)).rejects.toThrow("Price must be greater than zero");
   });
 });
