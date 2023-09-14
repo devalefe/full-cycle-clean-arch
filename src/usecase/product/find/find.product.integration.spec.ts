@@ -31,18 +31,14 @@ describe('Test find product use case', () => {
 
     await productRepository.create(product);
 
+    const input = { id: "1" };
 
-    const input = {
-      id: "1"
-    }
+    const result = await productFindUseCase.execute(input);
 
-    const output = {
+    expect(result).toEqual({
       id: "1",
       name: "Product A",
       price: 100
-    }
-
-    const result = await productFindUseCase.execute(input);
-    expect(result).toEqual(output);
+    });
   });
 });
